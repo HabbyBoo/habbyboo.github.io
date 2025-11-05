@@ -2,110 +2,153 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Sample Multi-Link Store</title>
+<title>salroom_store</title>
 <style>
   body {
     margin: 0;
+    padding: 0;
+    background: #CFE3DD;
     font-family: 'Noto Sans KR', sans-serif;
-    background: #f6f6f6;
+    display: flex;
+    justify-content: center;
   }
 
-  .header {
-    background: #ffffff;
-    padding: 20px;
+  .container {
+    width: 100%;
+    max-width: 480px;
+    padding: 24px 16px 60px;
+    box-sizing: border-box;
+  }
+
+  /* 프로필 영역 */
+  .profile {
     text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-    position: sticky;
-    top: 0;
+    margin-bottom: 20px;
+  }
+
+  .profile-img {
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #ddd;
+  }
+
+  .store-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 12px 0 6px;
+  }
+
+  .biz-btn {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 16px;
+    border: 1px solid #666;
+    color: #333;
+    background: #fff;
+    text-decoration: none;
+    margin-top: 6px;
+  }
+
+  /* 검색창 */
+  .search-box {
+    display: flex;
+    justify-content: center;
+    margin: 18px 0;
   }
 
   #search {
     width: 100%;
-    max-width: 480px;
     padding: 12px 14px;
-    font-size: 15px;
-    border-radius: 8px;
-    border: 1px solid #dcdcdc;
+    border-radius: 22px;
+    border: 1px solid #bbb;
+    font-size: 14px;
     outline: none;
   }
 
-  #search:focus {
-    border-color: #666;
-  }
-
-  .grid {
-    padding: 20px;
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
-
+  /* 상품 카드 리스트 */
   .item {
-    display: block;
+    display: flex;
+    align-items: center;
     background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
+    padding: 10px;
+    border-radius: 18px;
+    margin-bottom: 14px;
     text-decoration: none;
-    color: #333;
-    border: 1px solid #ededed;
-    transition: transform .25s, box-shadow .25s;
+    color: #000;
+    border: 1px solid #e0e0e0;
+    transition: transform .2s, box-shadow .2s;
   }
 
   .item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
   }
 
-  .item img {
-    width: 100%;
-    display: block;
+  .item-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: #ddd;
+    flex-shrink: 0;
   }
 
-  .item-name {
-    padding: 12px;
+  .item-info {
+    margin-left: 14px;
     font-size: 14px;
-    text-align: center;
-    word-break: keep-all;
+    font-weight: 500;
   }
 </style>
 </head>
+
 <body>
+  <div class="container">
 
-<div class="header">
-  <input type="text" id="search" placeholder="상품 ID 또는 이름 검색">
-</div>
+    <div class="profile">
+      <div class="profile-img"></div>
+      <div class="store-name">salroom_store</div>
+      <a class="biz-btn" href="#">비즈니스 제안</a>
+    </div>
 
-<div class="grid">
-  <a class="item" data-id="001" href="https://www.amazon.com/" target="_blank">
-    <img src="https://via.placeholder.com/400x400?text=001" alt="">
-    <div class="item-name">0001_item_name</div>
-  </a>
+    <div class="search-box">
+      <input id="search" type="text" placeholder="검색어를 입력해주세요.">
+    </div>
 
-  <a class="item" data-id="002" href="https://www.amazon.com/" target="_blank">
-    <img src="https://via.placeholder.com/400x400?text=002" alt="">
-    <div class="item-name">0002_item_name</div>
-  </a>
+    <!-- 상품 리스트 -->
+    <a class="item" data-id="001" href="https://www.amazon.com" target="_blank">
+      <div class="item-img"></div>
+      <div class="item-info">[001] 0001_item_name</div>
+    </a>
 
-  <a class="item" data-id="003" href="https://www.amazon.com/" target="_blank">
-    <img src="https://via.placeholder.com/400x400?text=003" alt="">
-    <div class="item-name">0003_item_name</div>
-  </a>
+    <a class="item" data-id="002" href="https://www.amazon.com" target="_blank">
+      <div class="item-img"></div>
+      <div class="item-info">[002] 0002_item_name</div>
+    </a>
 
-  <a class="item" data-id="004" href="https://www.amazon.com/" target="_blank">
-    <img src="https://via.placeholder.com/400x400?text=004" alt="">
-    <div class="item-name">0004_item_name</div>
-  </a>
-</div>
+    <a class="item" data-id="003" href="https://www.amazon.com" target="_blank">
+      <div class="item-img"></div>
+      <div class="item-info">[003] 0003_item_name</div>
+    </a>
+
+    <a class="item" data-id="004" href="https://www.amazon.com" target="_blank">
+      <div class="item-img"></div>
+      <div class="item-info">[004] 0004_item_name</div>
+    </a>
+
+  </div>
 
 <script>
-  const searchInput = document.querySelector("#search");
+  const searchInput = document.getElementById("search");
   const items = document.querySelectorAll(".item");
 
   searchInput.addEventListener("input", function() {
     const keyword = this.value.toLowerCase();
     items.forEach(item => {
-      const combinedText = item.dataset.id.toLowerCase() + item.innerText.toLowerCase();
-      item.style.display = combinedText.includes(keyword) ? "" : "none";
+      const text = (item.dataset.id + item.innerText).toLowerCase();
+      item.style.display = text.includes(keyword) ? "" : "none";
     });
   });
 </script>
