@@ -13,17 +13,40 @@
     justify-content: center;
   }
 
+  .top-notice {
+    width: 100%;
+    background: #5A5A5A;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 0;
+  }
+
   .container {
     width: 100%;
     max-width: 480px;
-    padding: 24px 16px 60px;
-    box-sizing: border-box;
+    padding: 16px 16px 60px;
   }
 
-  /* 프로필 영역 */
+  /* 상단 아이콘 */
+  .top-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #ccc;
+  }
+
+  /* 프로필 */
   .profile {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 10px 0 10px;
   }
 
   .profile-img {
@@ -31,52 +54,52 @@
     height: 90px;
     background: #fff;
     border-radius: 50%;
-    display: inline-block;
     border: 2px solid #ddd;
+    margin: 0 auto;
   }
 
   .store-name {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
-    margin: 12px 0 6px;
+    margin: 10px 0 4px;
   }
 
   .biz-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 6px 14px;
     font-size: 13px;
     border-radius: 16px;
     border: 1px solid #666;
-    color: #333;
     background: #fff;
+    color: #333;
     text-decoration: none;
-    margin-top: 6px;
   }
 
-  /* 검색창 */
+  /* 검색 */
   .search-box {
     display: flex;
     justify-content: center;
-    margin: 18px 0;
+    margin: 16px 0;
   }
 
   #search {
     width: 100%;
     padding: 12px 14px;
-    border-radius: 22px;
+    border-radius: 24px;
     border: 1px solid #bbb;
     font-size: 14px;
-    outline: none;
   }
 
-  /* 상품 카드 리스트 */
+  /* 리스트 카드 */
   .item {
     display: flex;
     align-items: center;
     background: #ffffff;
     padding: 10px;
     border-radius: 18px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     text-decoration: none;
     color: #000;
     border: 1px solid #e0e0e0;
@@ -89,8 +112,8 @@
   }
 
   .item-img {
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 62px;
     border-radius: 14px;
     background: #ddd;
     flex-shrink: 0;
@@ -105,35 +128,45 @@
 </head>
 
 <body>
+
+  <div class="top-notice">
+    이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+  </div>
+
   <div class="container">
+
+    <div class="top-icons">
+      <div class="icon"></div>
+      <div class="icon"></div>
+    </div>
 
     <div class="profile">
       <div class="profile-img"></div>
       <div class="store-name">salroom_store</div>
-      <a class="biz-btn" href="#">비즈니스 제안</a>
+      <a class="biz-btn" href="#">✉️ 비즈니스 제안</a>
     </div>
 
     <div class="search-box">
       <input id="search" type="text" placeholder="검색어를 입력해주세요.">
     </div>
 
-    <!-- 상품 리스트 -->
-    <a class="item" data-id="001" href="https://www.amazon.com" target="_blank">
+    <!-- 상품 -->
+    <a class="item" data-id="001" href="#" target="_blank">
       <div class="item-img"></div>
       <div class="item-info">[001] 0001_item_name</div>
     </a>
 
-    <a class="item" data-id="002" href="https://www.amazon.com" target="_blank">
+    <a class="item" data-id="002" href="#" target="_blank">
       <div class="item-img"></div>
       <div class="item-info">[002] 0002_item_name</div>
     </a>
 
-    <a class="item" data-id="003" href="https://www.amazon.com" target="_blank">
+    <a class="item" data-id="003" href="#" target="_blank">
       <div class="item-img"></div>
       <div class="item-info">[003] 0003_item_name</div>
     </a>
 
-    <a class="item" data-id="004" href="https://www.amazon.com" target="_blank">
+    <a class="item" data-id="004" href="#" target="_blank">
       <div class="item-img"></div>
       <div class="item-info">[004] 0004_item_name</div>
     </a>
