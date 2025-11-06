@@ -126,4 +126,33 @@ body {
 .product-link-btn:active {
   transform: scale(0.97);
 }
+/* ===== Seamless Scrolling Banner ===== */
+#scroll-banner {
+  width: 100%;
+  overflow: hidden;
+  margin: 20px 0;
+  white-space: nowrap;
+}
+
+.scroll-track {
+  display: inline-flex;
+  gap: 60px; /* 문장 사이 간격 조절 */
+  animation: marquee 14s linear infinite;
+}
+
+.scroll-track span {
+  font-size: 14px;
+  color: #6B6B6B;
+}
+
+/* 끊김 없는 반복 애니메이션 */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 
