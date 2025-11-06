@@ -103,3 +103,27 @@ body {
   height: 22px;
   border-radius: 7px;
 }
+/* ===== Hover Interaction ===== */
+
+/* 카드 전체가 살짝 떠오르면서 그림자 생김 */
+.product-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* 버튼에 부드러운 애니메이션 */
+.product-link-btn {
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card:hover .product-link-btn {
+  background: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+.product-link-btn:active {
+  transform: scale(0.97);
+}
+
