@@ -1,1 +1,120 @@
+/* 기본 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f8f8f8;
+  color: #111;
+  padding: 16px;
+}
+
+/* 상단 프로필 영역 */
+#site-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#profile-img {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+/* 사이트 타이틀 */
+#site-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* 스크롤 배너 */
+#scroll-banner {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 16px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* 검색창 */
+#search-container {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+#searchInput {
+  width: 100%;
+  max-width: 380px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* 상품 리스트 레이아웃 */
+#productList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 상품 카드 */
+.product-card {
+  background: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* 상품 이미지 */
+.product-img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* 상품명 */
+.product-name {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 링크 버튼 */
+.product-link-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #222;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.product-link-btn:hover {
+  opacity: 0.85;
+}
+
+/* 반응형: 좁은 화면에서 카드 세로 정렬 */
+@media (max-width: 450px) {
+  .product-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .product-img {
+    width: 110px;
+    height: 110px;
+  }
+}
