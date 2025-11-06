@@ -136,7 +136,7 @@ body {
 
 .scroll-track {
   display: inline-flex;
-  gap: 30px; /* 문장 사이 간격 조절 */
+  gap: 10px; /* 문장 사이 간격 조절 */
   animation: marquee 30s linear infinite;
 }
 
