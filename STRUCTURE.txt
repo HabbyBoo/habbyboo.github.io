@@ -109,21 +109,21 @@ JSON 변경 시 자동 반영
     page1.css
 
 접속 경로:
-https://username.github.io/page1/   (index.html 자동 인식)
+https://username.github.io/page1/         (index.html 자동 인식)
 
 공통 CSS 사용 원칙:
 - 모든 페이지는 css/style.css 를 기본 공유
-- 개별 페이지가 추가 UI가 필요할 경우 page1.css 로 보완 (선택 사항)
+- 개별 페이지가 추가 UI가 필요할 경우 page1.css 로 보완       (선택 사항)
 
 ------------------------------------------------------------
 ✅ 유지보수 요약
 ------------------------------------------------------------
-상품 추가/변경      → products.json + /db/img/item/           (코드 수정 불필요)
-태그 추가           → /db/img/tag/ + products.json tags 항목   (코드 수정 불필요)
-프로필 변경         → /db/img/site/profile.png                (코드 수정 불필요)
+상품 추가/변경      → products.json + /db/img/item/             (코드 수정 불필요)
+태그 추가           → /db/img/tag/ + products.json tags 항목    (코드 수정 불필요)
+프로필 변경         → /db/img/site/profile.png                 (코드 수정 불필요)
 상단 문구 변경       → index.html                               (문구만 변경)
 스타일 변경         → style.css                                (UI 전반 제어)
-개별 페이지 스타일   → page1/page1.css                          (필요 시에만 사용)
+개별 페이지 스타일   → page1/page1.css                           (필요 시에만 사용)
 
 ------------------------------------------------------------
 End of Specification — v1.1
