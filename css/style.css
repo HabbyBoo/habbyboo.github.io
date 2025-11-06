@@ -137,7 +137,7 @@ body {
 .scroll-track {
   display: inline-flex;
   gap: 30px; /* 문장 사이 간격 조절 */
-  animation: marquee 20s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 .scroll-track span {
@@ -151,7 +151,7 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
