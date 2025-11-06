@@ -1,1 +1,16 @@
-
+[
+  {
+    "id" : "0001",
+    "display_name" : "sample_product_0001",
+    "link" : "https://www.amazon.com",
+    "img":"0001.png",
+    "tags":["sample"]
+  },
+  {
+    "id" : "0002",
+    "display_name" : "sample_product_0002",
+    "link" : "https://www.amazon.com",
+    "img":"0002.png",
+    "tags":["sample"]
+  }
+]
