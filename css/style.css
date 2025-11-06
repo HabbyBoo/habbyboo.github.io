@@ -128,7 +128,6 @@ body {
 }
 /* ===== Seamless Scrolling Banner ===== */
 #scroll-banner {
-  width: 100%;
   overflow: hidden;
   margin: 20px 0;
   white-space: nowrap;
@@ -136,8 +135,9 @@ body {
 
 .scroll-track {
   display: inline-flex;
-  gap: 10px; /* 문장 사이 간격 조절 */
-  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+  gap: 20px; /* 문장 사이 간격 조절 */
+  animation: marquee 35s linear infinite;
 }
 
 .scroll-track span {
@@ -147,12 +147,8 @@ body {
 
 /* 끊김 없는 반복 애니메이션 */
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 
