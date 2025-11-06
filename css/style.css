@@ -1,4 +1,4 @@
-/* 기본 리셋 */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ body {
   padding: 16px;
 }
 
-/* 상단 프로필 영역 */
+/* Header */
 #site-header {
   text-align: center;
   margin-bottom: 20px;
@@ -26,29 +26,37 @@ body {
   margin-bottom: 8px;
 }
 
-/* 사이트 타이틀 */
 #site-title {
   font-size: 20px;
   font-weight: 600;
 }
 
-/* 스크롤 배너 */
+/* Banner */
 #scroll-banner {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   margin: 16px 0;
   font-size: 14px;
-  color: #555;
+  color: #444;
+  position: relative;
+}
+#scroll-banner span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 12s linear infinite;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 
-/* 검색창 */
+/* Search */
 #search-container {
   width: 100%;
   margin-bottom: 16px;
   text-align: center;
 }
-
 #searchInput {
   width: 100%;
   max-width: 380px;
@@ -58,14 +66,14 @@ body {
   font-size: 14px;
 }
 
-/* 상품 리스트 레이아웃 */
+/* Product List */
 #productList {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* 상품 카드 */
+/* Card */
 .product-card {
   background: #fff;
   padding: 14px;
@@ -75,25 +83,18 @@ body {
   align-items: center;
   gap: 14px;
 }
-
-/* 상품 이미지 */
 .product-img {
   width: 72px;
   height: 72px;
   object-fit: cover;
   border-radius: 12px;
 }
-
-/* 상품명 */
 .product-name {
   flex: 1;
   font-size: 16px;
   font-weight: 500;
 }
-
-/* 링크 버튼 */
 .product-link-btn {
-  display: inline-block;
   padding: 8px 12px;
   background: #222;
   color: white;
@@ -101,18 +102,26 @@ body {
   text-decoration: none;
   font-size: 13px;
 }
+.product-link-btn:hover { opacity: 0.85; }
 
-.product-link-btn:hover {
-  opacity: 0.85;
+/* Tags */
+.product-tags {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.tag-img {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
 }
 
-/* 반응형: 좁은 화면에서 카드 세로 정렬 */
+/* Responsive */
 @media (max-width: 450px) {
   .product-card {
     flex-direction: column;
     text-align: center;
   }
-  
   .product-img {
     width: 110px;
     height: 110px;
