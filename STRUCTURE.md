@@ -1,7 +1,7 @@
-# 🏪 Multi-Link Store Web Structure Specification
-Version: v1.1
-Project Type: GitHub Pages (Static Web App)
-Purpose: 상품 링크를 효율적으로 관리하는 단일 페이지 기반 멀티링크 웹사이트
+# 🏪 Multi-Link Store Web Structure Specification  
+Version: v1.1  
+Project Type: GitHub Pages (Static Web App)  
+Purpose: 상품 링크를 효율적으로 관리하는 단일 페이지 기반 멀티링크 웹사이트  
 
 ------------------------------------------------------------
 📌 핵심 개념
