@@ -129,26 +129,25 @@ body {
 /* ===== Seamless Scrolling Banner ===== */
 #scroll-banner {
   overflow: hidden;
-  margin: 20px 0;
   white-space: nowrap;
+  margin: 20px 0;
 }
 
 .scroll-track {
   display: inline-flex;
   white-space: nowrap;
-  gap: 20px; /* 문장 사이 간격 조절 */
-  animation: marquee 35s linear infinite;
+  width: max-content; /* ✅ 핵심 */
+  gap: 30px;
+  animation: marquee 36s linear infinite;
 }
 
 .scroll-track span {
+  display: inline-block !important; /* ✅ 핵심 */
   font-size: 14px;
   color: #6B6B6B;
 }
 
-/* 끊김 없는 반복 애니메이션 */
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
-
