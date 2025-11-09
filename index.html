@@ -6,7 +6,6 @@
   <title>Multi-Link Store</title>
 
   <style>
-    /* ✅ 안 2: 카드 강조형 + 모든 버튼 12% 축소 효과 */
     :root {
       --bg: #f2f3f5;
       --text: #222;
@@ -69,7 +68,6 @@
 
     .welcome {
       text-align: center;
-      font-family: 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       font-weight: 500;
       margin-bottom: 12px;
@@ -87,7 +85,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ✅ 버튼 그룹 */
     .button-group {
       display: flex;
       justify-content: center;
@@ -95,7 +92,7 @@
       margin-bottom: 20px;
     }
 
-    /* ✅ 모든 버튼 공통 스타일 (눌림 시 12% 축소) */
+    /* ✅ 모든 버튼 공통 (12% 축소) */
     .circle-btn {
       width: 40px;
       height: 40px;
@@ -130,7 +127,6 @@
       max-width: 600px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-family: 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       font-weight: 500;
       color: var(--text);
@@ -164,10 +160,16 @@
       text-decoration: none;
       color: inherit;
       padding: 12px;
-      transition: background-color 0.3s, transform 0.2s;
+      transition: transform 0.15s ease, background-color 0.3s;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.5s ease-out forwards;
+      -webkit-tap-highlight-color: transparent; /* 모바일 눌림 어두워짐 제거 */
+    }
+
+    /* ✅ 상품 카드 눌림 효과 (버튼과 동일) */
+    .item:active {
+      transform: scale(0.88);
     }
 
     .item:nth-child(1) { animation-delay: 0.1s; }
@@ -224,11 +226,6 @@
       text-align: left;
       width: 100%;
     }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 
@@ -243,7 +240,6 @@
 
   <div class="welcome">Welcome to <b>HabbyBoo</b>'s Store</div>
 
-  <!-- ✅ 모든 버튼 동일 효과 적용 -->
   <div class="button-group">
     <a href="mailto:parkharry.yt@gmail.com" class="circle-btn" aria-label="Contact">✉️</a>
     <button class="circle-btn" id="theme-toggle" aria-label="Toggle dark mode">🌞</button>
