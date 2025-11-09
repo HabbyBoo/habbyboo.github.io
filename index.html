@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Multi-Link Store</title>
-  
+
   <!-- 기본 스타일 -->
   <link rel="stylesheet" href="./css/style.css" />
 </head>
@@ -19,11 +19,9 @@
   <!-- 상단 공지 스크롤 배너 -->
   <div id="scroll-banner">
     <div class="scroll-track">
-      <span>안내문구1</span><span>안내문구2</span><span>안내문구3</span><span>안내문구4</span><span>안내문구5</span><span>안내문구6</span><span>안내문구7</span><span>안내문구8</span>
-      <span>안내문구11</span><span>안내문구22</span><span>안내문구33</span><span>안내문구44</span><span>안내문구55</span><span>안내문구66</span><span>안내문구77</span><span>안내문구88</span>
-  </div>
-</div>
-
+      <span>안내문구1</span><span>안내문구2</span><span>안내문구3</span>
+      <span>안내문구4</span><span>안내문구5</span><span>안내문구6</span>
+      <span>안내문구7</span><span>안내문구8</span>
     </div>
   </div>
 
@@ -41,6 +39,50 @@
   </main>
 
   <!-- 렌더링 스크립트 -->
-  <script src="./js/render.js"></script>
+  <script>
+    // products.json 로드 및 렌더링
+    fetch("./db/data/products.json")
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById("productList");
+        const searchInput = document.getElementById("searchInput");
+
+        function renderProducts(filter = "") {
+          list.innerHTML = "";
+          data
+            .filter(p => 
+              p.id.includes(filter) ||
+              p.display_name.includes(filter)
+            )
+            .forEach(p => {
+              const card = document.createElement("div");
+              card.className = "product-card";
+              card.innerHTML = `
+                <img src="./db/img/item/${p.img}" class="product-img" alt="${p.display_name}" />
+                <div class="product-info">
+                  <div class="product-tags">
+                    ${(p.tags || [])
+                      .map(tag => `<img src="./db/img/tag/${tag}.png" class="tag-img" alt="${tag}" />`)
+                      .join("")}
+                  </div>
+                  <div class="product-name">${p.display_name}</div>
+                </div>
+              `;
+              // 카드 클릭 시 링크로 이동
+              card.addEventListener("click", () => {
+                window.open(p.link, "_blank");
+              });
+              list.appendChild(card);
+            });
+        }
+
+        renderProducts();
+
+        // 검색 필터
+        searchInput.addEventListener("input", e => {
+          renderProducts(e.target.value.trim());
+        });
+      });
+  </script>
 </body>
 </html>
