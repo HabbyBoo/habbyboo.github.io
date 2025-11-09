@@ -15,18 +15,22 @@
 
     header {
       background: #fff;
-      padding: 12px;
+      padding: 10px;
       border-bottom: 1px solid #ddd;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 10;
+      overflow: hidden;
     }
 
+    /* ✅ 상단 안내문 */
     #banner {
       white-space: nowrap;
       overflow: hidden;
       position: relative;
+      font-size: 0.9rem; /* 한 단계 작게 */
+      color: #333;
     }
 
     #banner span {
@@ -48,7 +52,6 @@
       object-fit: cover;
     }
 
-    /* ✅ 페이드인 + Bold 적용 (delay 0.3초로 변경) */
     .welcome {
       text-align: center;
       font-family: 'Noto Sans KR', sans-serif;
@@ -162,7 +165,10 @@
 
 <body>
   <header>
-    <div id="banner"><span>쿠팡_파트너스_안내_문구_testA</span></div>
+    <!-- ✅ 문구 및 효과 수정 -->
+    <div id="banner">
+      <span>As an Amazon Associate, I earn from qualifying purchases</span>
+    </div>
   </header>
 
   <img src="db/img/site/profile.png" alt="profile" class="profile">
