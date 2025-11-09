@@ -6,7 +6,6 @@
   <title>Multi-Link Store</title>
 
   <style>
-    /* ✅ 안 2: 카드 강조형 + 이미지 축소 + 중앙 정렬 개선 */
     :root {
       --bg: #f2f3f5;
       --text: #222;
@@ -179,7 +178,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ✅ 이미지 크기 축소 */
     .item .product {
       width: 84px;
       height: 84px;
@@ -188,23 +186,23 @@
       flex-shrink: 0;
     }
 
-    /* ✅ 상품명 + 태그 중앙 정렬 */
+    /* ✅ 상품명+태그 묶음: 세로 가운데, 가로 왼쪽 정렬 */
     .info {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;   /* 왼쪽 정렬 */
+      justify-content: center;   /* 세로 가운데 */
       height: 84px;
       flex: 1;
       margin-left: 14px;
-      text-align: center;
+      text-align: left;
     }
 
     .tags {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 6px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;       /* ✅ 간격 6px로 확대 */
     }
 
     .tags img {
@@ -216,7 +214,7 @@
     .name {
       font-size: 1.1rem;
       font-weight: 500;
-      text-align: center;
+      text-align: left;
       line-height: 1.2;
     }
   </style>
