@@ -6,17 +6,18 @@
   <title>Multi-Link Store</title>
 
   <style>
+    /* ✅ 안 1: 대비 강화형 */
     :root {
-      --bg: #f9f9f9;
+      --bg: #f4f4f4;     /* 약간의 회색 배경 */
       --text: #222;
-      --card: #fff;
+      --card: #ffffff;   /* 카드와 버튼은 순백색 */
       --banner-text: #333;
     }
 
     body.dark {
-      --bg: #111;
+      --bg: #0f0f0f;     /* 완전 블랙보다 약간 밝은 다크 배경 */
       --text: #eee;
-      --card: #1a1a1a;
+      --card: #1f1f1f;   /* 중간 어두운 톤으로 구분 강화 */
       --banner-text: #ccc;
     }
 
@@ -96,23 +97,24 @@
     }
 
     .circle-btn {
-      width: 40px;   /* ✅ 44 → 40으로 축소 */
-      height: 40px;  /* ✅ 44 → 40으로 축소 */
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: none;
       background: var(--card);
       color: var(--text);
-      font-size: 1.3rem; /* 내부 아이콘 크기 유지 */
+      font-size: 1.3rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: background-color 0.3s, color 0.3s, transform 0.1s;
       text-decoration: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
 
     .circle-btn:hover {
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     .circle-btn:focus {
@@ -133,6 +135,7 @@
       color: var(--text);
       background: var(--card);
       transition: background-color 0.3s, color 0.3s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
 
     #search::placeholder {
@@ -153,7 +156,7 @@
       justify-content: flex-start;
       background: var(--card);
       border-radius: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       width: 90%;
       max-width: 600px;
       text-decoration: none;
@@ -223,7 +226,6 @@
 
   <div class="welcome">Welcome to <b>HabbyBoo</b>'s Store</div>
 
-  <!-- 버튼 그룹 -->
   <div class="button-group">
     <a href="mailto:parkharry.yt@gmail.com" class="circle-btn" aria-label="Contact">✉️</a>
     <button class="circle-btn" id="theme-toggle" aria-label="Toggle dark mode">🌞</button>
