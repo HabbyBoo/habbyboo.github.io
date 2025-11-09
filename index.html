@@ -3,86 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multi-Link Store</title>
+  <title>My Multi-Link Store</title>
 
-  <!-- 기본 스타일 -->
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
-<body>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <!-- 상단 프로필 영역 -->
-  <header id="site-header">
-    <img id="profile-img" src="./db/img/site/profile.png" alt="Profile" />
-    <h1 id="site-title">My Multi-Link Store</h1>
-  </header>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      background: #FFFBE8;
+      color: #111;
+      padding: 28px;
+    }
 
-  <!-- 상단 공지 스크롤 배너 -->
-  <div id="scroll-banner">
-    <div class="scroll-track">
-      <span>안내문구1</span><span>안내문구2</span><span>안내문구3</span>
-      <span>안내문구4</span><span>안내문구5</span><span>안내문구6</span>
-      <span>안내문구7</span><span>안내문구8</span>
-    </div>
-  </div>
+    /* Header */
+    #site-header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    #profile-img {
+      width: 98px;
+      height: 98px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 14px;
+    }
+    #site-title {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
 
-  <!-- 검색창 -->
-  <div id="search-container">
-    <input 
-      type="text" 
-      id="searchInput" 
-      placeholder="상품명 또는 ID 검색..." />
-  </div>
+    /* Scroll Banner */
+    #scroll-banner {
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 20px 0;
+    }
+    .scroll-track {
+      display: inline-flex;
+      white-space: nowrap;
+      width: max-content;
+      gap: 30px;
+      animation: marquee 36s linear infinite;
+    }
+    .scroll-track span {
+      display: inline-block !important;
+      font-size: 14px;
+      color: #6B6B6B;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
-  <!-- 상품 리스트 렌더링 영역 -->
-  <main>
-    <div id="productList"></div>
-  </main>
-
-  <!-- 렌더링 스크립트 -->
-  <script>
-    // products.json 로드 및 렌더링
-    fetch("./db/data/products.json")
-      .then(res => res.json())
-      .then(data => {
-        const list = document.getElementById("productList");
-        const searchInput = document.getElementById("searchInput");
-
-        function renderProducts(filter = "") {
-          list.innerHTML = "";
-          data
-            .filter(p => 
-              p.id.includes(filter) ||
-              p.display_name.includes(filter)
-            )
-            .forEach(p => {
-              const card = document.createElement("div");
-              card.className = "product-card";
-              card.innerHTML = `
-                <img src="./db/img/item/${p.img}" class="product-img" alt="${p.display_name}" />
-                <div class="product-info">
-                  <div class="product-tags">
-                    ${(p.tags || [])
-                      .map(tag => `<img src="./db/img/tag/${tag}.png" class="tag-img" alt="${tag}" />`)
-                      .join("")}
-                  </div>
-                  <div class="product-name">${p.display_name}</div>
-                </div>
-              `;
-              // 카드 클릭 시 링크로 이동
-              card.addEventListener("click", () => {
-                window.open(p.link, "_blank");
-              });
-              list.appendChild(card);
-            });
-        }
-
-        renderProducts();
-
-        // 검색 필터
-        searchInput.addEventListener("input", e => {
-          renderProducts(e.target.value.trim());
-        });
-      });
-  </script>
-</body>
-</html>
+    /* Search */
+    #sea
