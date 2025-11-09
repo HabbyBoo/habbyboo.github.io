@@ -6,16 +6,31 @@
   <title>Multi-Link Store</title>
 
   <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --card: #fff;
+      --banner-text: #333;
+    }
+
+    body.dark {
+      --bg: #111;
+      --text: #eee;
+      --card: #1a1a1a;
+      --banner-text: #ccc;
+    }
+
     body {
       margin: 0;
       font-family: 'Noto Sans KR', sans-serif;
-      background: #f9f9f9;
-      color: #222;
+      background: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
-      background: #fff;
-      padding: 5px; /* ✅ 여백 절반으로 축소 */
+      background: var(--card);
+      padding: 5px;
       border-bottom: 1px solid #ddd;
       text-align: center;
       position: sticky;
@@ -24,18 +39,18 @@
       overflow: hidden;
     }
 
-    /* ✅ 상단 안내문 수정 */
+    /* ✅ 상단 안내문 */
     #banner {
       white-space: nowrap;
       overflow: hidden;
       position: relative;
       font-size: 0.9rem;
-      color: #333;
+      color: var(--banner-text);
     }
 
     #banner span {
       display: inline-block;
-      animation: scrollText 12s linear infinite; /* ✅ 속도 12초로 조정 */
+      animation: scrollText 12s linear infinite;
     }
 
     @keyframes scrollText {
@@ -57,8 +72,8 @@
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       font-weight: 500;
-      margin-bottom: 20px;
-      color: #222;
+      margin-bottom: 12px;
+      color: var(--text);
       opacity: 0;
       animation: fadeIn 1.2s ease-out 0.3s forwards;
     }
@@ -72,6 +87,37 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ✅ 버튼 그룹 */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .circle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: var(--card);
+      color: var(--text);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s, color 0.3s, transform 0.1s;
+    }
+
+    .circle-btn:hover {
+      opacity: 0.8;
+    }
+
+    .circle-btn:focus {
+      outline: 2px solid #888;
+    }
+
     #search {
       display: block;
       margin: 10px auto 20px;
@@ -83,7 +129,9 @@
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       font-weight: 500;
-      color: #222;
+      color: var(--text);
+      background: var(--card);
+      transition: background-color 0.3s, color 0.3s;
     }
 
     #search::placeholder {
@@ -102,7 +150,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      background: #fff;
+      background: var(--card);
       border-radius: 16px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       width: 90%;
@@ -110,11 +158,11 @@
       text-decoration: none;
       color: inherit;
       padding: 12px;
-      transition: background 0.2s;
+      transition: background-color 0.3s;
     }
 
     .item:active {
-      background: #f0f0f0;
+      background: rgba(0,0,0,0.05);
     }
 
     .item .product {
@@ -174,11 +222,34 @@
 
   <div class="welcome">Welcome to <b>HabbyBoo</b>'s Store</div>
 
+  <!-- ✅ 버튼 그룹 -->
+  <div class="button-group">
+    <button class="circle-btn" aria-label="Contact">✉️</button>
+    <button class="circle-btn" id="theme-toggle" aria-label="Toggle dark mode">🌞</button>
+  </div>
+
   <input type="text" id="search" placeholder="Enter product ID here" />
 
   <main id="product-list"></main>
 
   <script>
+    // ✅ 테마 로드 및 저장
+    const body = document.body;
+    const themeBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+      body.classList.add('dark');
+      themeBtn.textContent = '🌙';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      themeBtn.textContent = isDark ? '🌙' : '🌞';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
     async function loadProducts() {
       const res = await fetch('db/data/products.json');
       const products = await res.json();
