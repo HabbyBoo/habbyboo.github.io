@@ -96,13 +96,13 @@
     }
 
     .circle-btn {
-      width: 44px;
-      height: 44px;
+      width: 40px;   /* ✅ 44 → 40으로 축소 */
+      height: 40px;  /* ✅ 44 → 40으로 축소 */
       border-radius: 50%;
       border: none;
       background: var(--card);
       color: var(--text);
-      font-size: 1.3rem;
+      font-size: 1.3rem; /* 내부 아이콘 크기 유지 */
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -223,12 +223,9 @@
 
   <div class="welcome">Welcome to <b>HabbyBoo</b>'s Store</div>
 
-  <!-- ✅ 버튼 그룹 -->
+  <!-- 버튼 그룹 -->
   <div class="button-group">
-    <!-- ✅ 이메일 전송 버튼 -->
     <a href="mailto:parkharry.yt@gmail.com" class="circle-btn" aria-label="Contact">✉️</a>
-
-    <!-- ✅ 라이트/다크 모드 토글 -->
     <button class="circle-btn" id="theme-toggle" aria-label="Toggle dark mode">🌞</button>
   </div>
 
@@ -237,7 +234,6 @@
   <main id="product-list"></main>
 
   <script>
-    // ✅ 테마 로드 및 저장
     const body = document.body;
     const themeBtn = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme');
@@ -273,7 +269,7 @@
       const container = document.getElementById('product-list');
       container.innerHTML = '';
       products.forEach(p => {
-        const tagsHTML = p.tags.map(tag => 
+        const tagsHTML = p.tags.map(tag =>
           `<img src="db/img/tag/${tag}.png" alt="${tag}">`
         ).join('');
 
