@@ -48,13 +48,23 @@
       object-fit: cover;
     }
 
+    /* ✅ 수정된 검색창 스타일 */
     #search {
       display: block;
       margin: 10px auto 20px;
-      padding: 8px;
-      width: 80%;
+      padding: 10px 12px;
+      width: 90%;
+      max-width: 600px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #222;
+    }
+
+    #search::placeholder {
+      color: #999;
     }
 
     main {
@@ -138,7 +148,8 @@
 
   <img src="db/img/site/profile.png" alt="profile" class="profile">
 
-  <input type="text" id="search" placeholder="상품 검색..." />
+  <!-- ✅ 수정된 placeholder -->
+  <input type="text" id="search" placeholder="상품 ID를 입력해주세요" />
 
   <main id="product-list"></main>
 
