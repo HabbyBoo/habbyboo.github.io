@@ -39,7 +39,7 @@
       overflow: hidden;
     }
 
-    /* ✅ 상단 안내문 */
+    /* 상단 안내문 */
     #banner {
       white-space: nowrap;
       overflow: hidden;
@@ -87,7 +87,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ✅ 버튼 그룹 */
+    /* 버튼 그룹 */
     .button-group {
       display: flex;
       justify-content: center;
@@ -108,6 +108,7 @@
       align-items: center;
       justify-content: center;
       transition: background-color 0.3s, color 0.3s, transform 0.1s;
+      text-decoration: none;
     }
 
     .circle-btn:hover {
@@ -224,7 +225,10 @@
 
   <!-- ✅ 버튼 그룹 -->
   <div class="button-group">
-    <button class="circle-btn" aria-label="Contact">✉️</button>
+    <!-- ✅ 이메일 전송 버튼 -->
+    <a href="mailto:parkharry.yt@gmail.com" class="circle-btn" aria-label="Contact">✉️</a>
+
+    <!-- ✅ 라이트/다크 모드 토글 -->
     <button class="circle-btn" id="theme-toggle" aria-label="Toggle dark mode">🌞</button>
   </div>
 
