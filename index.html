@@ -6,6 +6,7 @@
   <title>Multi-Link Store</title>
 
   <style>
+    /* ✅ 안 2: 카드 강조형 + 버튼/상품 눌림 효과 통합 */
     :root {
       --bg: #f2f3f5;
       --text: #222;
@@ -92,7 +93,7 @@
       margin-bottom: 20px;
     }
 
-    /* ✅ 모든 버튼 공통 (12% 축소) */
+    /* ✅ 모든 버튼 공통 (눌림 시 12% 축소) */
     .circle-btn {
       width: 40px;
       height: 40px;
@@ -127,6 +128,7 @@
       max-width: 600px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-family: 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       font-weight: 500;
       color: var(--text);
@@ -167,9 +169,10 @@
       -webkit-tap-highlight-color: transparent; /* 모바일 눌림 어두워짐 제거 */
     }
 
-    /* ✅ 상품 카드 눌림 효과 (버튼과 동일) */
-    .item:active {
+    /* ✅ 상품 카드 눌림 효과 (JS에서 pressed 클래스 제어) */
+    .item.pressed {
       transform: scale(0.88);
+      transition: transform 0.15s ease;
     }
 
     .item:nth-child(1) { animation-delay: 0.1s; }
@@ -254,6 +257,7 @@
     const themeBtn = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme');
 
+    // ✅ 테마 로드 및 저장
     if (savedTheme === 'dark') {
       body.classList.add('dark');
       themeBtn.textContent = '🌙';
@@ -266,6 +270,7 @@
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 
+    // ✅ 상품 로드 및 렌더링
     async function loadProducts() {
       const res = await fetch('db/data/products.json');
       const products = await res.json();
@@ -281,9 +286,11 @@
       });
     }
 
+    // ✅ 상품 렌더링 함수
     function render(products) {
       const container = document.getElementById('product-list');
       container.innerHTML = '';
+
       products.forEach((p, index) => {
         const tagsHTML = p.tags.map(tag =>
           `<img src="db/img/tag/${tag}.png" alt="${tag}">`
@@ -299,6 +306,21 @@
             </div>
           </a>`;
         container.insertAdjacentHTML('beforeend', html);
+      });
+
+      // ✅ 상품 카드 클릭 시 0.1초 눌림 효과 후 새 탭 열기
+      document.querySelectorAll('.item').forEach(item => {
+        item.addEventListener('click', e => {
+          e.preventDefault(); // 즉시 이동 막기
+          const link = item.href;
+
+          // 눌림 효과 추가
+          item.classList.add('pressed');
+          setTimeout(() => {
+            item.classList.remove('pressed');
+            window.open(link, '_blank'); // 0.1초 후 새 탭 열기
+          }, 100);
+        });
       });
     }
 
