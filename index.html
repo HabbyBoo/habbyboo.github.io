@@ -48,7 +48,7 @@
       object-fit: cover;
     }
 
-    /* ✅ 페이드인 + Bold 적용 */
+    /* ✅ 페이드인 + Bold 적용 (delay 0.3초로 변경) */
     .welcome {
       text-align: center;
       font-family: 'Noto Sans KR', sans-serif;
@@ -57,7 +57,7 @@
       margin-bottom: 20px;
       color: #222;
       opacity: 0;
-      animation: fadeIn 1.2s ease-out 0.5s forwards;
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
     }
 
     .welcome b {
@@ -169,7 +169,6 @@
 
   <div class="welcome">Welcome to <b>HabbyBoo</b>'s Store</div>
 
-  <!-- ✅ placeholder 영문 변경 -->
   <input type="text" id="search" placeholder="Enter product ID here" />
 
   <main id="product-list"></main>
