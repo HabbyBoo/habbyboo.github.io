@@ -48,7 +48,6 @@
       object-fit: cover;
     }
 
-    /* ✅ 수정된 검색창 스타일 */
     #search {
       display: block;
       margin: 10px auto 20px;
@@ -75,7 +74,7 @@
       padding-bottom: 50px;
     }
 
-    /* 상품 카드 */
+    /* ✅ 상품 카드 */
     .item {
       display: flex;
       align-items: center;
@@ -95,10 +94,11 @@
       background: #f0f0f0;
     }
 
+    /* ✅ 이미지 크기 조정 (96×96) */
     .item .product {
-      width: 120px;
-      height: 120px;
-      border-radius: 14px;
+      width: 96px;
+      height: 96px;
+      border-radius: 12px;
       object-fit: cover;
       flex-shrink: 0;
     }
@@ -108,24 +108,24 @@
       flex-direction: column;
       justify-content: center;
       position: relative;
-      height: 120px;
+      height: 96px;
       flex: 1;
       margin-left: 14px;
     }
 
     .tags {
       position: absolute;
-      top: 8px;
+      top: 6px;
       left: 0;
       display: flex;
       gap: 6px;
-      height: 28px;
+      height: 24px;
     }
 
     .tags img {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
     }
 
     .name {
@@ -148,7 +148,6 @@
 
   <img src="db/img/site/profile.png" alt="profile" class="profile">
 
-  <!-- ✅ 수정된 placeholder -->
   <input type="text" id="search" placeholder="상품 ID를 입력해주세요" />
 
   <main id="product-list"></main>
