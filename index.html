@@ -44,8 +44,18 @@
       height: 100px;
       border-radius: 50%;
       display: block;
-      margin: 20px auto;
+      margin: 20px auto 10px;
       object-fit: cover;
+    }
+
+    /* ✅ 새 문구 */
+    .welcome {
+      text-align: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: #222;
     }
 
     #search {
@@ -74,7 +84,7 @@
       padding-bottom: 50px;
     }
 
-    /* ✅ 상품 카드 */
+    /* 상품 카드 */
     .item {
       display: flex;
       align-items: center;
@@ -94,7 +104,6 @@
       background: #f0f0f0;
     }
 
-    /* ✅ 이미지 크기 조정 (96×96) */
     .item .product {
       width: 96px;
       height: 96px;
@@ -147,6 +156,9 @@
   </header>
 
   <img src="db/img/site/profile.png" alt="profile" class="profile">
+
+  <!-- ✅ 추가된 환영 문구 -->
+  <div class="welcome">Welcome to HabbyBoo's Store</div>
 
   <input type="text" id="search" placeholder="상품 ID를 입력해주세요" />
 
