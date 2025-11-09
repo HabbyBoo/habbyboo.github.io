@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi-Link Store</title>
 
-  <!-- ✅ 통합된 CSS -->
   <style>
     body {
       margin: 0;
@@ -13,6 +12,7 @@
       background: #f9f9f9;
       color: #222;
     }
+
     header {
       background: #fff;
       padding: 12px;
@@ -20,16 +20,20 @@
       text-align: center;
       position: sticky;
       top: 0;
+      z-index: 10;
     }
+
     #banner {
       white-space: nowrap;
       overflow: hidden;
       position: relative;
     }
+
     #banner span {
       display: inline-block;
       animation: scrollText 10s linear infinite;
     }
+
     @keyframes scrollText {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
@@ -46,35 +50,83 @@
 
     #search {
       display: block;
-      margin: 10px auto;
+      margin: 10px auto 20px;
       padding: 8px;
       width: 80%;
       border: 1px solid #ccc;
       border-radius: 6px;
     }
 
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 50px;
+    }
+
+    /* 상품 카드 */
     .item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       background: #fff;
-      margin: 10px auto;
-      padding: 12px;
       border-radius: 16px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       width: 90%;
-      max-width: 500px;
+      max-width: 600px;
+      text-decoration: none;
+      color: inherit;
+      padding: 12px;
+      transition: background 0.2s;
     }
-    .item img.product {
-      width: 100%;
+
+    .item:active {
+      background: #f0f0f0;
+    }
+
+    .item .product {
+      width: 120px;
+      height: 120px;
       border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
     }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      height: 120px;
+      flex: 1;
+      margin-left: 14px;
+    }
+
     .tags {
+      position: absolute;
+      top: 8px;
+      left: 0;
       display: flex;
       gap: 6px;
-      margin-bottom: 6px;
+      height: 28px;
     }
+
     .tags img {
       width: 28px;
       height: 28px;
       border-radius: 6px;
+    }
+
+    .name {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: left;
+      width: 100%;
     }
   </style>
 </head>
@@ -90,7 +142,6 @@
 
   <main id="product-list"></main>
 
-  <!-- ✅ 통합된 JS -->
   <script>
     async function loadProducts() {
       const res = await fetch('db/data/products.json');
@@ -114,14 +165,15 @@
         const tagsHTML = p.tags.map(tag => 
           `<img src="db/img/tag/${tag}.png" alt="${tag}">`
         ).join('');
+
         const html = `
-          <div class="item">
-            <div class="tags">${tagsHTML}</div>
-            <a href="${p.link}" target="_blank">
-              <img class="product" src="db/img/item/${p.img}" alt="${p.display_name}">
-            </a>
-            <h3>${p.display_name}</h3>
-          </div>`;
+          <a href="${p.link}" target="_blank" class="item">
+            <img class="product" src="db/img/item/${p.img}" alt="${p.display_name}">
+            <div class="info">
+              <div class="tags">${tagsHTML}</div>
+              <div class="name">${p.display_name}</div>
+            </div>
+          </a>`;
         container.insertAdjacentHTML('beforeend', html);
       });
     }
