@@ -6,7 +6,7 @@
   <title>Multi-Link Store</title>
 
   <style>
-    /* ✅ 안 2: 카드 강조형 + 버튼 눌림 효과만 유지 */
+    /* ✅ 안 2: 카드 강조형 + 이미지 축소 + 중앙 정렬 개선 */
     :root {
       --bg: #f2f3f5;
       --text: #222;
@@ -93,7 +93,6 @@
       margin-bottom: 20px;
     }
 
-    /* ✅ 버튼만 눌림 시 축소 유지 */
     .circle-btn {
       width: 40px;
       height: 40px;
@@ -149,7 +148,7 @@
       padding-bottom: 50px;
     }
 
-    /* ✅ 상품 카드 (눌림 애니메이션 제거) */
+    /* ✅ 상품 카드 */
     .item {
       display: flex;
       align-items: center;
@@ -169,7 +168,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* ✅ 눌림 제거: pressed 관련 삭제 */
     .item:nth-child(1) { animation-delay: 0.1s; }
     .item:nth-child(2) { animation-delay: 0.2s; }
     .item:nth-child(3) { animation-delay: 0.3s; }
@@ -181,31 +179,32 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ✅ 이미지 크기 축소 */
     .item .product {
-      width: 96px;
-      height: 96px;
+      width: 84px;
+      height: 84px;
       border-radius: 12px;
       object-fit: cover;
       flex-shrink: 0;
     }
 
+    /* ✅ 상품명 + 태그 중앙 정렬 */
     .info {
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
-      position: relative;
-      height: 96px;
+      height: 84px;
       flex: 1;
       margin-left: 14px;
+      text-align: center;
     }
 
     .tags {
-      position: absolute;
-      top: 6px;
-      left: 0;
       display: flex;
+      justify-content: center;
       gap: 6px;
-      height: 24px;
+      margin-bottom: 4px;
     }
 
     .tags img {
@@ -215,14 +214,10 @@
     }
 
     .name {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
       font-size: 1.1rem;
       font-weight: 500;
-      text-align: left;
-      width: 100%;
+      text-align: center;
+      line-height: 1.2;
     }
   </style>
 </head>
@@ -239,4 +234,69 @@
   <div class="welcome">Welcome to <b>HabbyBoo</b>'s Store</div>
 
   <div class="button-group">
-    <a href="mailto:parkharry.yt@gmail.com" class="circle-btn" aria
+    <a href="mailto:parkharry.yt@gmail.com" class="circle-btn" aria-label="Contact">✉️</a>
+    <button class="circle-btn" id="theme-toggle" aria-label="Toggle dark mode">🌞</button>
+  </div>
+
+  <input type="text" id="search" placeholder="Enter product ID here" />
+
+  <main id="product-list"></main>
+
+  <script>
+    const body = document.body;
+    const themeBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+      body.classList.add('dark');
+      themeBtn.textContent = '🌙';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      themeBtn.textContent = isDark ? '🌙' : '🌞';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    async function loadProducts() {
+      const res = await fetch('db/data/products.json');
+      const products = await res.json();
+      render(products);
+
+      const searchInput = document.getElementById('search');
+      searchInput.addEventListener('input', () => {
+        const keyword = searchInput.value.toLowerCase();
+        const filtered = products.filter(p =>
+          p.id.includes(keyword) || p.display_name.toLowerCase().includes(keyword)
+        );
+        render(filtered);
+      });
+    }
+
+    function render(products) {
+      const container = document.getElementById('product-list');
+      container.innerHTML = '';
+
+      products.forEach((p, index) => {
+        const tagsHTML = p.tags.map(tag =>
+          `<img src="db/img/tag/${tag}.png" alt="${tag}">`
+        ).join('');
+
+        const delay = (index + 1) * 0.1;
+        const html = `
+          <a href="${p.link}" target="_blank" class="item" style="animation-delay: ${delay}s;">
+            <img class="product" src="db/img/item/${p.img}" alt="${p.display_name}">
+            <div class="info">
+              <div class="tags">${tagsHTML}</div>
+              <div class="name">${p.display_name}</div>
+            </div>
+          </a>`;
+        container.insertAdjacentHTML('beforeend', html);
+      });
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
