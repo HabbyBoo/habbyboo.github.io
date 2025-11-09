@@ -1,60 +1,132 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Multi-Link Store</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Link Store</title>
 
+  <!-- ✅ 통합된 CSS -->
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-      background: #FFFBE8;
-      color: #111;
-      padding: 28px;
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #f9f9f9;
+      color: #222;
     }
-
-    /* Header */
-    #site-header {
+    header {
+      background: #fff;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
       text-align: center;
-      margin-bottom: 44px;
+      position: sticky;
+      top: 0;
     }
-    #profile-img {
-      width: 98px;
-      height: 98px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 14px;
-    }
-    #site-title {
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-    }
-
-    /* Scroll Banner */
-    #scroll-banner {
+    #banner {
+      white-space: nowrap;
       overflow: hidden;
-      white-space: nowrap;
-      margin: 20px 0;
+      position: relative;
     }
-    .scroll-track {
-      display: inline-flex;
-      white-space: nowrap;
-      width: max-content;
-      gap: 30px;
-      animation: marquee 36s linear infinite;
+    #banner span {
+      display: inline-block;
+      animation: scrollText 10s linear infinite;
     }
-    .scroll-track span {
-      display: inline-block !important;
-      font-size: 14px;
-      color: #6B6B6B;
-    }
-    @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
-    /* Search */
-    #sea
+    .profile {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: block;
+      margin: 20px auto;
+      object-fit: cover;
+    }
+
+    #search {
+      display: block;
+      margin: 10px auto;
+      padding: 8px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .item {
+      background: #fff;
+      margin: 10px auto;
+      padding: 12px;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      width: 90%;
+      max-width: 500px;
+    }
+    .item img.product {
+      width: 100%;
+      border-radius: 14px;
+    }
+    .tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .tags img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div id="banner"><span>쿠팡_파트너스_안내_문구_testA</span></div>
+  </header>
+
+  <img src="db/img/site/profile.png" alt="profile" class="profile">
+
+  <input type="text" id="search" placeholder="상품 검색..." />
+
+  <main id="product-list"></main>
+
+  <!-- ✅ 통합된 JS -->
+  <script>
+    async function loadProducts() {
+      const res = await fetch('db/data/products.json');
+      const products = await res.json();
+      render(products);
+
+      const searchInput = document.getElementById('search');
+      searchInput.addEventListener('input', () => {
+        const keyword = searchInput.value.toLowerCase();
+        const filtered = products.filter(p =>
+          p.id.includes(keyword) || p.display_name.toLowerCase().includes(keyword)
+        );
+        render(filtered);
+      });
+    }
+
+    function render(products) {
+      const container = document.getElementById('product-list');
+      container.innerHTML = '';
+      products.forEach(p => {
+        const tagsHTML = p.tags.map(tag => 
+          `<img src="db/img/tag/${tag}.png" alt="${tag}">`
+        ).join('');
+        const html = `
+          <div class="item">
+            <div class="tags">${tagsHTML}</div>
+            <a href="${p.link}" target="_blank">
+              <img class="product" src="db/img/item/${p.img}" alt="${p.display_name}">
+            </a>
+            <h3>${p.display_name}</h3>
+          </div>`;
+        container.insertAdjacentHTML('beforeend', html);
+      });
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
