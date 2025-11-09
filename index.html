@@ -15,7 +15,7 @@
 
     header {
       background: #fff;
-      padding: 10px;
+      padding: 5px; /* ✅ 여백 절반으로 축소 */
       border-bottom: 1px solid #ddd;
       text-align: center;
       position: sticky;
@@ -24,18 +24,18 @@
       overflow: hidden;
     }
 
-    /* ✅ 상단 안내문 */
+    /* ✅ 상단 안내문 수정 */
     #banner {
       white-space: nowrap;
       overflow: hidden;
       position: relative;
-      font-size: 0.9rem; /* 한 단계 작게 */
+      font-size: 0.9rem;
       color: #333;
     }
 
     #banner span {
       display: inline-block;
-      animation: scrollText 10s linear infinite;
+      animation: scrollText 12s linear infinite; /* ✅ 속도 12초로 조정 */
     }
 
     @keyframes scrollText {
@@ -165,7 +165,6 @@
 
 <body>
   <header>
-    <!-- ✅ 문구 및 효과 수정 -->
     <div id="banner">
       <span>As an Amazon Associate, I earn from qualifying purchases</span>
     </div>
