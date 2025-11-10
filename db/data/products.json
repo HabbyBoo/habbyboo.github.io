@@ -1,30 +1,9 @@
 [
   {
     "id" : "0001",
-    "display_name" : "sample_product_0001",
-    "link" : "https://www.amazon.com",
+    "display_name" : "Raindrop Mood Humidifier",
+    "link" : "https://amzn.to/49gwCQx",
     "img":"0001.png",
-    "tags":["sample"]
-  },
-  {
-    "id" : "0002",
-    "display_name" : "sample_product_0002",
-    "link" : "https://www.amazon.com",
-    "img":"0002.png",
-    "tags":["sample"]
-  },
-  {
-    "id" : "0003",
-    "display_name" : "sample_product_0003",
-    "link" : "https://www.amazon.com",
-    "img":"0003.png",
-    "tags":[]
-  },
-  {
-    "id" : "0004",
-    "display_name" : "sample_product_0004",
-    "link" : "https://www.amazon.com",
-    "img":"0004.png",
-    "tags":["sample"]
+    "tags":[""]
   }
 ]
