@@ -1,9 +1,16 @@
 [
   {
     "id" : "001",
-    "display_name" : "[001] Santa Express Train for Christmas Tree",
+    "display_name" : "[001] Santa Express Train",
     "link" : "https://amzn.to/43ObMo1",
     "img":"001.png",
+    "tags":[]
+  },
+  {
+    "id" : "002",
+    "display_name" : "[002] Harry Potter Book Nook Kit",
+    "link" : "https://amzn.to/43MULuj",
+    "img":"002.png",
     "tags":[]
   }
 ]
